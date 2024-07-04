@@ -3,50 +3,336 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
-
-  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
-  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <title>Frontend Mentor | Newsletter sign-up form with success message</title>
-
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
   <style>
+    * {
+    margin: 0;
+    padding: 0;
+  }
+  *,
+  *::before,
+  *::after {
+    box-sizing: inherit;
+  }
+  
+  html {
+    box-sizing: border-box; 
+    scroll-behavior: smooth;
+  }
+    :root {
+    --tomato: hsl(4, 100%, 67%);
+    --dark-slate-grey: hsl(234, 29%, 20%);
+    --charcoal-grey: hsl(235, 18%, 26%);
+    --grey: hsl(231, 7%, 60%);
+    --white: hsl(0, 0%, 100%);
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
     .attribution { font-size: 11px; text-align: center; }
     .attribution a { color: hsl(228, 45%, 44%); }
+  
+  h1{
+    margin-top: 1.6rem;
+    margin-left: 1.6rem;
+    margin-bottom: 1.3rem;
+    color: var(--dark-slate-grey);
+    font-size: 250%;
+    font-weight: 700;
+  }
+  .p1{
+    margin: 1rem;
+    margin-left:1.6rem;
+    text-indent:0rem; 
+    color: var(--dark-slate-grey);
+    font-weight: 500;
+    font-stretch: condensed;
+    font-size:100%;
+    text-shadow: 1px 1px 2px rgba(0.5, 0.5, 0.5, 0.5);
+    text-align:left;
+    line-height: 1.8rem;
+  }
+  ul {
+    text-decoration: none;
+    list-style: none;
+    margin-bottom:2rem;
+  }
+  ul li{
+    margin: 0;
+    padding: 0;
+    font-weight: 500;
+    color: var(--dark-slate-grey);
+    text-shadow: 1px 1px 2px rgba(0.3, 0.3, 0.3, 0.3);
+    margin-bottom: -1rem;
+  }
+
+  li{
+    margin: 0;
+    padding: 0;
+    position: relative;
+    top:-1rem;
+    left:4rem;
+    width:300px;
+    line-height: 1.5rem;
+  }
+  .icon{
+    width:1.4rem;
+    position: relative;
+    top:0.5rem;
+    left:1.6rem
+  }
+  .labelemail{
+    display: inline-block;
+    text-indent: 1.6rem;
+    font-weight: 600;
+    color:var(--dark-slate-grey);
+    font-size: small;
+  }
+  .inputemail{
+    display: block;
+    margin-left: 1.6rem;
+    border:0.1rem solid var(--charcoal-grey);
+    border-radius: 0.4rem;
+    background-color: var(--white);
+    padding: 0.9rem;
+    margin-bottom: 1rem;
+    margin-top: 0.5rem;
+    width:20rem;
+    text-indent: 0.6rem;
+  }
+  .buttonemail{
+    background-color:var(--dark-slate-grey);
+    color:var(--white);
+    padding: 1rem;
+    margin-left: 1.6rem;
+    border-radius: 0.4rem;
+    width:20rem;
+    border:none;
+    font-size: medium;
+  }
+  .buttonemail:hover{
+    background-color:var(--tomato);
+    cursor: pointer;
+  }
+  /*segunda parte*/
+  .icon2{
+    margin-top: 20vh;
+    width: 3rem;
+    position: relative;
+    top:1rem;
+    left:2rem;
+  }
+  .gracias{
+    margin-top: 1.6rem;
+    margin-left: 1.6rem;
+    margin-bottom: 1.3rem;
+    color: var(--dark-slate-grey);
+    font-size: 280%;
+    font-weight: 700;
+  }
+  .p2{
+    margin: 1rem;
+    margin-left:1.6rem;
+    text-indent:0rem; 
+    color: var(--dark-slate-grey);
+    font-weight: 500;
+    font-stretch: condensed;
+    font-size:100%;
+    text-shadow: 1px 1px 2px rgba(0.5, 0.5, 0.5, 0.5);
+    text-align:left;
+    line-height: 1.8rem;
+    height:42vh;
+  }
+  footer{
+    margin-top:3rem;
+  }
+  .contenedor{
+    display: flex;
+    justify-content:space-evenly;
+    flex-direction: row;
+  
+  }
+  .mensaje{
+    color:var(--tomato);
+    font-size: small;
+    font-weight: 600;
+    display: inline;
+    position: relative;
+    left:7.5rem;
+    opacity: 0;
+  }
+  .imgdesktop{
+   display: none; 
+  }
+  @media (min-width:1024px){
+    .attribution{
+      color:var(--white);
+    }
+    .img{
+    display: none;
+  }
+  .imgdesktop{
+    display: inline-block;
+    height:593px;
+    width: 398px;
+  }
+  body{
+    background-color: var(--dark-slate-grey);
+  }
+  .container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width:949px;
+    height:641px;
+    padding: 1.5rem ;
+    margin: 0 auto;
+    margin-bottom: 2rem;
+    border-radius:2rem;
+    background-color: var(--white);
+    position: relative;
+    top: 5%;
+    left: 35%;
+    /*transform: translate(-50%, 10%);*/
+    
+  }
+  .subcontainer1{
+    display: inline;
+    min-width:50%;
+    
+  }
+  .subcontainer2{
+    display: inline;
+   margin-left: 2rem;
+  }
+  ul li{
+    width:70%;
+  }
+  .inputemail , .buttonemail{
+    width:81%;
+  }
+  h1{
+    font-size: 350%;
+  }
+  }
+
+  @media (min-width:1440px){
+    .container{
+      transform: translate(-50%, 35%);
+      padding-right:1.5rem;
+      padding-left:2.5rem;
+    }
+    ul li{
+    width:90%;
+  }
+    .imgdesktop{
+      margin: 1rem;
+    }
+    .inputemail , .buttonemail{
+    width:84%;
+  }
+  .p1{
+    width:90%;
+  }
+  h1{
+    font-size: 380%;
+  }
+  .mensaje{
+    position: relative;
+    left:10.9rem;
+  }
+  /*segunda parte*/
+  .icon2{
+    margin-top:2vh;
+    margin-bottom:1vh;
+    width: 3rem;
+    position: relative;
+    top:1rem;
+    left:2rem;
+  }
+  #success{
+    background-color: var(--dark-slate-grey);
+  
+  }
+  .containersuccess{
+    border-radius: 0.3rem;
+    height: 33rem;
+    width: 31rem;
+    padding: 1rem;
+    border-radius: 1.7rem;
+    background-color: var(--white);
+    transform: translate(100%, 50%);
+  }
+  .gracias{
+    font-size: 350%;
+    font-weight:bolder;
+  }
+  .p2{
+    height:10vh;
+    width: 80%;
+  }  
+
+  }
   </style>
 </head>
 <body>
-
+  <div id="form">
   <!-- Sign-up form start -->
+<header>
+  <img src="./assets/images/illustration-sign-up-mobile.svg" class="img">
+</header>
+<main>
+  <div class="container">
+    <div class="subcontainer1">
+  <h1>Stay updated!</h1>
 
-  Stay updated!
-
-  Join 60,000+ product managers receiving monthly updates on:
-
-  Product discovery and building what matters
-  Measuring to ensure updates are a success
-  And much more!
-
-  Email address
-  email@company.com
-
-  Subscribe to monthly newsletter
-
+  <div class="p1">Join 60,000+ product managers receiving monthly updates on:</div>
+  <ul>
+  <div><img src="./assets/images/icon-success.svg" class="icon"></div><li>Product discovery and building what matters</li>
+  <div><img src="./assets/images/icon-success.svg" class="icon"></div><li>Measuring to ensure updates are a success</li>
+  <div><img src="./assets/images/icon-success.svg" class="icon"></div><li>And much more!</li>
+  </ul>  
+  <div class="contenedormensaje">
+  <label for="email" class="labelemail">Email address</label><p class="mensaje" id="msj">Valid email required</p>
+</div>
+  <input type="text" class="inputemail" name="email" id="email" placeholder="email@company.com" required/>
+  <input type="button" class="buttonemail"  value="Subscribe to monthly newsletter" />
+    </div>
+    <div class="subcontainer2">
+      <img src="./assets/images/illustration-sign-up-desktop.svg" class="imgdesktop">
+    </div>
+  </div>
   <!-- Sign-up form end -->
-
+  </div>
+  <div id="success">
   <!-- Success message start -->
-
-  Thanks for subscribing!
-
-  A confirmation email has been sent to ash@loremcompany.com. 
-  Please open it and click the button inside to confirm your subscription.
-
-  Dismiss message
-
-  <!-- Success message end -->
+   <div class="containersuccess">
+  <div><img src="./assets/images/icon-success.svg" class="icon2"></div>
+  <h1 class="gracias">Thanks for subscribing!</h1>
   
+  <p class="p2">A confirmation email has been sent to <b>ash@loremcompany.com.</b> 
+  Please open it and click the button inside to confirm your subscription.</p>
+
+  <input type="button" class="buttonemail"  value="Dismiss message" />
+  </div>
+  <!-- Success message end -->
+   </div>
+
+   
+</main>
+
+<footer>
   <div class="attribution">
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
     Coded by <a href="#">Your Name Here</a>.
   </div>
+</footer>
+<script src="script.js"></script>
 </body>
 </html>
